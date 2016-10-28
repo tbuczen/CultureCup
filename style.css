@@ -15,7 +15,6 @@ body{
     text-align: center;
     color: rgb(255,255,255);
     padding-top: 15vh;
-    
     font-size: 5vh;
 }
 #logo{
@@ -41,4 +40,14 @@ body{
     width: 80vw;
     height: 100vh;
     margin-left: 10vw;
+}
+#kasa{
+    color: black;
+    width: 80%;
+    height: 5%;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+#preferences{
+    padding-top: 5%; 
 }
