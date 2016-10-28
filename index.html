@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkd-J0b0vERWrzzQR5_yfhMMKwOxJbL6g&region=PL"></script>
+         <script src="https://cdn.jsdelivr.net/gmap3/7.1.0/gmap3.min.js"></script>
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+       
+        <meta charset="utf-8" />
+        
+
         <script src="script.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Ubuntu&amp;subset=latin-ext" rel="stylesheet">
+        
     </head>
     <body>
         <div id="start">
@@ -17,7 +23,6 @@
             <div class="tekst">Weź coś zrób stary!</div>
             <input type="number" id="kasa" min="0" placeholder="ile masz pieniedzy?"/>
             <div class="tekst" id="preferences">preferencje</div>
-
             <div id="types-list">
                 <ul>
                 <li>
@@ -42,7 +47,25 @@
                 </li>
                 </ul>
             </div>
+            <div id="map">
+                <script>
+                    $("#map").gmap3({
+                        map: {         
+                            options: {             
+                                center: [40, 20],             
+                                zoom: 3,
+                                disableDefaultUI: true
+
+                            },
+                        }
+                    })
+                </script>        
+            </div>
+
+
+            
 
         </div>
+        
     </body>
 </html>
