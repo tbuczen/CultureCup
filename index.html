@@ -3,9 +3,11 @@
     <head>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkd-J0b0vERWrzzQR5_yfhMMKwOxJbL6g&region=PL"></script>
          <script src="https://cdn.jsdelivr.net/gmap3/7.1.0/gmap3.min.js"></script>
-        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
        
+        <meta charset="utf-8" />
         
+
         <script src="script.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Ubuntu&amp;subset=latin-ext" rel="stylesheet">
@@ -21,10 +23,30 @@
             <div class="tekst">Weź coś zrób stary!</div>
             <input type="number" id="kasa" min="0" placeholder="ile masz pieniedzy?"/>
             <div class="tekst" id="preferences">preferencje</div>
-            <input type="radio" name="gender" value="male"> Male<br>
-            <input type="radio" name="gender" value="female"> Female<br>
-            <input type="radio" name="gender" value="other"> Other
-
+            <div id="types-list">
+                <ul>
+                <li>
+                    <label for="film">Film</label>
+                    <input id="film" type="radio" name="type" value="film"/>
+                </li>
+                <li>
+                    <label for="cafe">Cafe</label>
+                    <input id="cafe" type="radio" name="type" value="film"/>
+                </li>
+                <li>
+                    <label for="food">Food</label>
+                    <input id="food" type="radio" name="type" value="film"/>
+                </li>
+                <li>
+                    <label for="museum">Museum</label>
+                    <input id="museum" type="radio" name="type" value="film"/>
+                </li>
+                <li>
+                    <label for="theatre">Theatre</label>
+                    <input id="theatre" type="radio" name="type" value="film"/>
+                </li>
+                </ul>
+            </div>
             <div id="map">
                 <script>
                     $("#map").gmap3({
@@ -39,6 +61,10 @@
                     })
                 </script>        
             </div>
+
+
+            
+
         </div>
         
     </body>
