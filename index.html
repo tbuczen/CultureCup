@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkd-J0b0vERWrzzQR5_yfhMMKwOxJbL6g&region=PL"></script>
+         <script src="https://cdn.jsdelivr.net/gmap3/7.1.0/gmap3.min.js"></script>
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+       
+        
         <script src="script.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Ubuntu&amp;subset=latin-ext" rel="stylesheet">
+        
     </head>
     <body>
         <div id="start">
@@ -19,6 +24,22 @@
             <input type="radio" name="gender" value="male"> Male<br>
             <input type="radio" name="gender" value="female"> Female<br>
             <input type="radio" name="gender" value="other"> Other
+
+            <div id="map">
+                <script>
+                    $("#map").gmap3({
+                        map: {         
+                            options: {             
+                                center: [40, 20],             
+                                zoom: 3,
+                                disableDefaultUI: true
+
+                            },
+                        }
+                    })
+                </script>        
+            </div>
         </div>
+        
     </body>
 </html>
