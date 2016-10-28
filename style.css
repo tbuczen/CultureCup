@@ -1,0 +1,44 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0,0,0,0.6);
+}
+#start{
+    background-color: rgba(0,0,0,0.8);
+    width: 80vw;
+    height: 100vh;
+    margin-left: 10vw;
+}
+#tekst{
+    width: 100%;
+    text-align: center;
+    color: rgb(255,255,255);
+    padding-top: 15vh;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 5vh;
+}
+#logo{
+    background-image: url(./logo.png);
+    width: 80%;
+    height: 50%;
+    margin-left: 10%;
+    margin-top: 5%;
+    background-repeat: none;
+    background-position: center;
+}
+#bt1{
+    background-color: rgb(150,150,150);
+    width: 80%;
+    margin-left: 10%;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 5vh;
+    color: white;
+    text-align: center;
+    margin-top: 5%;
+}
+#main{
+    background-color: rgba(0,0,0,0.8);
+    width: 80vw;
+    height: 100vh;
+    margin-left: 10vw;
+}
