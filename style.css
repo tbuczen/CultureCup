@@ -51,15 +51,16 @@ body{
 #preferences{
     padding-top: 5%; 
 }
-<<<<<<< HEAD
-#map{
-    width: 80%;
-    height: 40vh;
-=======
 
 ul{
     margin: 0;
     padding: 0;
+}
+
+#map {
+    width: 80%;
+    height: 300px;
+    margin: 0 auto;
 }
 
 li{
@@ -86,5 +87,4 @@ li input{
     display: inline-block;
     width: 3%;
     float:right;
->>>>>>> dac782579697ed34ff36abdc12c6d2d83e1536d1
 }
