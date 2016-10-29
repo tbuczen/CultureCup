@@ -3,35 +3,33 @@ $(document).ready(function(){
     $("#sticky-header").fadeOut(0)
     var radioselect
     $(".radio").on("click",function(){
-        if(radioselect != null){
-            $(".radio").css("background-color","white")
-            $(this).css("background-color","#FD8A55")
-            radioselect = $(this).attr("id")
-            console.log(radioselect)
+        id = $(this).attr("id");
+        $(".radio").css("background-color","white");
+        if(id == radioselect){
+            radioselect = null;
         }else{
-            $(this).css("background-color","#FD8A55")
-            radioselect = $(this).attr("id")
-            console.log(radioselect)
+            $(this).css("background-color","#FD8A55");
+            radioselect = id;
         }
-        
+
     })
 
     var multiselect = []
     $(".multi").on("click",function(){
-        var number = $(this).attr("id")
-        number = number.substr(1,2)
-        if(multiselect[number] != null){
-            $(this).css("background-color","white")
-            multiselect.splice(number, 1)
-            console.log(multiselect)
+
+        var id = $(this).attr("id").substr(1,2);
+        var val = $(this).data("val");
+
+        key = multiselect.indexOf(val);
+        if(multiselect[key] != null){
+            $(this).css("background-color","white");
+            multiselect.splice(key, 1);
+
         }else{
-            $(this).css("background-color","#FD8A55")
-            multiselect[number] = $(this).attr("id")
-            console.log(multiselect)
+            $(this).css("background-color","#FD8A55");
+            multiselect.push(val);
         }
-    })
-   
-    
+    });
 
     var myLatLng;
     var map;
