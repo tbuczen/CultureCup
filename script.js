@@ -11,9 +11,9 @@ $(document).ready(function(){
         });
 
         map.marker([
-            {position:myLatLng},
-            {address:"Karmelicka 6, Kraków, Poland"},
-            {address:"Szewska 25, Kraków, Poland", icon: "http://maps.google.com/mapfiles/marker_grey.png"}
+            {position:myLatLng,icon: "http://maps.google.com/mapfiles/marker_orange.png"},
+            {address:"Karmelicka 6, Kraków, Poland",icon: "http://maps.google.com/mapfiles/marker_orange.png"},
+            {address:"Szewska 25, Kraków, Poland", icon: "http://maps.google.com/mapfiles/marker_orange.png"}
         ])
     },
     function (error) {
@@ -53,6 +53,8 @@ $(document).ready(function(){
                 title: 'Hello World!'
             });
         }
+
+
 
         /*
         var directionsService = new google.maps.DirectionsService;
