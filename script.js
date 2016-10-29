@@ -1,5 +1,29 @@
 $(document).ready(function(){
 
+    var radioselect
+    $(".radio").on("click",function(){
+        radioselect = $(this).attr("id")
+        console.log(radioselect)
+    })
+
+    var multiselect = []
+    $(".multi").on("click",function(){
+        var number = $(this).attr("id")
+        number = number.substr(1,2)
+        if(multiselect[number] != null){
+            $(this).css("background-color","white")
+            multiselect.splice(number, 1)
+            console.log(multiselect)
+            
+        }else{
+            $(this).css("background-color","#FD8A55")
+            multiselect[number] = $(this).attr("id")
+            console.log(multiselect)
+        }
+    })
+   
+    
+
     var myLatLng;
     var map;
     navigator.geolocation.getCurrentPosition(function (position) {
