@@ -75,22 +75,35 @@ $(document).ready(function(){
 
         var d = getPlaces();
 
-
         $.each(d,function(index, o ){
+            ratesHtml = "<div style='text-align: center'>";
             for(var i=0; i<o.rates.length; i++){
-                
+                var r = o.rates[i];
+                ratesHtml += "<div><span>"+r.user+": </span><p style='margin-top: 0;'>"+r.opinion+"</p></div>" ;
             }
-            tpl = '<div class="list-row"><div class="name"><p>'+o.name+'</p><p>Cena od '+o.cash+'</p></div><div class="details">'+ "adres: " + o.address + "<br/><br/> opis: " + o.description + "<br/><br/> opinie: "+ +'</div>'
+
+            var address = o.address;
+            ratesHtml += "<div>";
+            tpl = '<div class="list-row" data-address="'+address+'" data-state="0"><div class="name"><p>'+o.name+'</p><p>Cena od '+o.cash+'</p></div><div class="details">'+ "adres: " + o.address + "<br/><br/> opis: " + o.description + "<br/><br/> opinie: "+ ratesHtml +'</div>'
             $(".details").fadeOut(0)
             $("#list").append(tpl);
         });
     });
 
     $('body').on("click",".list-row",function(){
-        console.log("aha")
-        var d = $(this).find(".details")
-        console.log(d)
-        d.fadeIn(500)
+        var state = $(this).data("state");
+
+        var d = $(this).find(".details");
+        if(state == 0){
+            $(this).data("state",1);
+            d.fadeIn(500);
+        }else{
+            $(this).data("state",0);
+            d.fadeOut(300);
+        }
+
+        // console.log(d)
+
     })
 
     $("#backToMain").on("click",function(){
