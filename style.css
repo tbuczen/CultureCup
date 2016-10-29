@@ -88,3 +88,9 @@ li input{
     width: 3%;
     float:right;
 }
+#getData{
+    width: 80%;
+}
+#tekst2{
+    padding-top: 2vh;
+}
