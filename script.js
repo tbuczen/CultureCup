@@ -74,11 +74,23 @@ $(document).ready(function(){
 
         var d = getPlaces();
 
+
         $.each(d,function(index, o ){
-            tpl = '<div class="list-row"><div class="name"><p>'+o.name+'</p><p>Cena od '+o.cash+'</p></div><div class="stars">gwiazdki 4.5</div><div class="navigateBtn">Pokaż detale</div><div class="details"><div>Mapka</div><p>opis</p><div>gwiazdki 4.5</div><div class="navigateBtn"></div></div></div>'
+            for(var i=0; i<o.rates.length; i++){
+                
+            }
+            tpl = '<div class="list-row"><div class="name"><p>'+o.name+'</p><p>Cena od '+o.cash+'</p></div><div class="details">'+ "adres: " + o.address + "<br/><br/> opis: " + o.description + "<br/><br/> opinie: "+ +'</div>'
+            $(".details").fadeOut(0)
             $("#list").append(tpl);
         });
     });
+
+    $('body').on("click",".list-row",function(){
+        console.log("aha")
+        var d = $(this).find(".details")
+        console.log(d)
+        d.fadeIn(500)
+    })
 
     $("#backToMain").on("click",function(){
 

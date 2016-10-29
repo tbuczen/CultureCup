@@ -73,6 +73,8 @@ li{
     width: 80%;
     cursor: pointer;
     padding: 10px 5px;
+    font-size: 25px;
+    text-align: center;
 }
 
 li:hover{
@@ -92,7 +94,7 @@ li label{
     margin-top: 5%;
 }
 #tekst2{
-    margin-top: 200px;
+    margin-top: 350px;
 }
 
 #sticky-header{
@@ -101,7 +103,7 @@ li label{
     top: 0;
     left: 0;
     right:0;
-    height: 200px;
+    height: 320px;
     width: 100%;
     background-image: url("header.png");
     background-repeat: no-repeat;
@@ -172,20 +174,27 @@ li label{
 
 .list-row{
     background-color: white;
-    margin-bottom: 20px;
+    margin-top: 20px;
     min-height: 60px;
     display: inline-block;
     width: 100%;
+    
 }
 .name, .stars{
     float:left;
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
 }
 
 .hidden, .details{
     display: none;
 }
 
-
+.details{
+    width: 80%;
+    padding-left: 10%;
+}
 
 input[type=range] {
   -webkit-appearance: none;
