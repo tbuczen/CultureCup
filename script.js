@@ -10,10 +10,12 @@ $(document).ready(function(){
             $(this).css("background-color","#FD8A55");
             radioselect = id;
         }
+
     })
 
     var multiselect = []
     $(".multi").on("click",function(){
+
         var id = $(this).attr("id").substr(1,2);
         var val = $(this).data("val");
 
@@ -21,6 +23,7 @@ $(document).ready(function(){
         if(multiselect[key] != null){
             $(this).css("background-color","white");
             multiselect.splice(key, 1);
+
         }else{
             $(this).css("background-color","#FD8A55");
             multiselect.push(val);
