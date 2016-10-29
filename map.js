@@ -1,20 +1,22 @@
 /**
  * Created by urias on 29.10.16.
  */
+var tab = [];
+var map;
 function initMap() {
     navigator.geolocation.getCurrentPosition(
         function (position) {
-            console.log(position.coords.latitude)
-            console.log(position.coords.longitude)
-
             // bieżąca pozycja lat i lng,
             // tu rysujemy marker i streetview
             var myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
 
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 9,
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
                 center: myLatLng
             });
+
+            tab.push([position.coords.latitude,position.coords.longitude]);
 
             var marker = new google.maps.Marker({
                 position: myLatLng,
