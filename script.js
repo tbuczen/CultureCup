@@ -7,7 +7,10 @@ $(document).ready(function(){
             $("#sticky-header").show();
         })
     }, 2000);
-    
+
+    $("#search").on("click",function(){
+        console.log("search");
+    });
 
     $("#getData").on("click",function(){
         var data = {

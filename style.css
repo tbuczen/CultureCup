@@ -41,12 +41,12 @@ body{
     margin: 0 auto;
     margin-top: 40px;
 }
-#kasa{
+#cash{
     color: black;
     width: 80%;
-    height: 5%;
-    margin-left: 10%;
-    margin-top: 5%;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: block;
 }
 #preferences{
     padding-top: 5%; 
@@ -73,12 +73,12 @@ li{
 }
 
 li:hover{
-    background-color: #ffad51;
+    background-color: #FD8A55;
 }
 
 li label{
     font-size: 25px;
-    width: calc(95% - 18px);
+    width: calc(95% - 24px);
     display: inline-block;
     padding-left: 10px;
 }
@@ -104,4 +104,33 @@ li input{
     left: 0;
     right:0;
     height: 50px;
+}
+
+#search{
+    border-radius: 180px;
+    width: 90px;
+    height: 90px;
+    background-color: #FD8A55;
+    /*background: url("icons")*/
+    margin:  0 auto;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+
+/*LIST left right*/
+#types-list{
+    width: 88%;
+    margin: 0 auto;
+}
+.left{
+    width: 48%;
+    float: left;
+    display: block ;
+}
+
+.right{
+    width: 48%;
+    float: right;
+    display: block ;
 }
