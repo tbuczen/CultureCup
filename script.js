@@ -1,7 +1,30 @@
 $(document).ready(function(){
-    //alert("jquery dziala \nculture date")
 
-    setTimeout(function(){ 
+    var myLatLng;
+    var map;
+    navigator.geolocation.getCurrentPosition(function (position) {
+        myLatLng = [ position.coords.latitude,  position.coords.longitude];
+        map = $('#map').gmap3({
+            center:myLatLng,
+            zoom:9,
+            disabledDefaultUi: true,
+        });
+
+        map.marker([
+            {position:myLatLng},
+            {address:"Karmelicka 6, Kraków, Poland"},
+            {address:"Szewska 25, Kraków, Poland", icon: "http://maps.google.com/mapfiles/marker_grey.png"}
+        ])
+    },
+    function (error) {
+        console.log("problem z lokalizacją")
+    },
+    {
+        maximumAge: 10000,    // czas dostępu do danych
+        timeout: 15000     // po tym czasie error jeśli brak danych
+    });
+
+    setTimeout(function(){
         $("#start").fadeOut(500, function(){
             $("#main").fadeOut(0).fadeIn(500);
             $("#sticky-header").show();

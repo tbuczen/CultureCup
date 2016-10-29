@@ -2,71 +2,57 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <script
-                src="https://code.jquery.com/jquery-2.2.4.min.js"
-                integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-                crossorigin="anonymous"></script>
-        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCt35iw5FaGOqDw52qBMMxgB-HcP4yH-e4&region=PL"></script>
+        <script src="js/gmap3.js" type="text/javascript"></script>
+        <script src="script.js"></script>
         <script src="data.js" type="text/javascript"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Ubuntu&amp;subset=latin-ext" rel="stylesheet">
     </head>
     <body>
-        <div id="start">
+        <div id="start" >
             <div id="logo"></div>
         </div>
         <div id="main">
             <div id="sticky-header" style="display:none"></div>
 
-            <div class="tekst" id="tekst2">Weź coś zrób stary!</div>
+            <div class="tekst" id="tekst2">Gdzie dziś idziemy?</div>
 
             <input type="number" id="cash" min="0" placeholder="Ile przeznaczyć na wyjście?"/>
 
-            <div id="types-list">
-                <ul class="left">
-                    <li>
-                        <label for="theatre">Teatr</label>
-                        <input id="theatre" type="radio" name="type" value="film"/>
-                    </li>
-                    <li>
-                        <label for="film">Kino</label>
-                        <input id="film" type="radio" name="type" value="film"/>
-                    </li>
-                    <li>
-                        <label for="bar">Bar</label>
-                        <input id="bar" type="radio" name="type" value="bar"/>
-                    </li>
-                </ul>
-
-                <ul class="right">
-                    <li>
-                        <label for="restaurant">Restauracja</label>
-                        <input id="restaurant" type="radio" name="type" value="restaurant"/>
-                    </li>
-                    <li>
-                        <label for="museum">Museum</label>
-                        <input id="museum" type="radio" name="type" value="film"/>
-                    </li>
-                    <li>
-                        <label for="event">Wydarzenia</label>
-                        <input id="event" type="radio" name="type" value="event"/>
-                    </li>
-                </ul>
+            <div class="block">
+                <p class="title">Typ miejsca</p>
+                <span class="line"></span>
+                <div style="display: flex">
+                    <ul class="left">
+                        <li data-type="theatre">Teatr</li>
+                        <li data-type="film">Kino</li>
+                        <li data-type="bar">Bar</li>
+                    </ul>
+                    <ul class="right">
+                        <li data-type="restaurant">Restauracja</li>
+                        <li data-type="museum">Muzeum</li>
+                        <li data-type="event">Wydarzenia</li>
+                    </ul>
+                </div>
+                <span class="line"></span>
             </div>
             <div id="map"></div>
 
-            <script src="script.js"></script>
-            <script src="map.js"></script>
-
-            <div id="option-list"></div>
-
-            <!--<button id="getData"></button>-->
-            <div id="search">
+            <div class="block">
+                <p class="title">Dotatkowe opcje</p>
+                <span class="line"></span>
+                <ul>
+                    <li>Świeże powietrze</li>
+                    <li>Muzyka na żywo</li>
+                    <li>Dancefloor</li>
+                    <li>Gdzie jeszcze nie byłem</li>
+                </ul>
+                <span class="line"></span>
             </div>
-            
-            <script async defer
-                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkd-J0b0vERWrzzQR5_yfhMMKwOxJbL6g&callback=initMap">
-            </script>
+
+            <div id="search"></div>
         </div>
     </body>
 </html>

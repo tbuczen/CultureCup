@@ -1,7 +1,3 @@
-/**
- * Created by urias on 29.10.16.
- */
-
 var data = [
     {
         "name" : "Teatr Bagatela",
@@ -78,4 +74,4 @@ var data = [
             {"user": "Janusz", "opinion" : "polecam i pozdrawiam"}
         ]
     }
-]
+];
