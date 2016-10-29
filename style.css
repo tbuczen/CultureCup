@@ -88,3 +88,7 @@ li input{
     width: 3%;
     float:right;
 }
+
+.hidden{
+    display: none;
+}

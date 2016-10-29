@@ -1,3 +1,4 @@
+<?php require_once "./back/back.php" ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,8 +18,8 @@
             <div id="logo"></div>
             <div id="bt1" class="button">ZACZYNAMY!</div>
         </div>
-        <div id="main">
-            <div class="tekst">Weź coś zrób stary!</div>
+        <div id="main" class="hidden">
+            <div class="tekst">Gdzie dziś wyruszamy?</div>
             <input type="number" id="kasa" min="0" placeholder="ile masz pieniedzy?"/>
             <div class="tekst" id="preferences">preferencje</div>
             <div id="types-list">
