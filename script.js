@@ -64,18 +64,19 @@ $(document).ready(function(){
         $("#start").fadeOut(500, function(){
             $("#main").fadeOut(0).fadeIn(500);
             $("#sticky-header").fadeOut(0).fadeIn(500)
-            
         })
     }, 2000);
 
+
+
     $("#search").on("click",function(){
-        // console.log("search");
         $("#list").show();
         $('html, body').animate({
             scrollTop: $("#list").offset().top
         }, 300);
 
-
+        var $data = getPlaces();
+        console.debug($data);
         // $("#main").hide();
     });
 
@@ -102,24 +103,39 @@ $(document).ready(function(){
             });
         }
 
-        /*
-        var directionsService = new google.maps.DirectionsService;
-        var directionsDisplay = new google.maps.DirectionsRenderer;
-        directionsDisplay.setMap(map);
-
-var flightPlanCoordinates = [
-          {lat: tab[0][0], lng: tab[0][1]},
-          {lat: tab[1][0], lng: tab[1][1]},
-        ];
-        var flightPath = new google.maps.Polyline({
-          path: flightPlanCoordinates,
-          geodesic: true,
-          strokeColor: '#FF0000',
-          strokeOpacity: 1.0,
-          strokeWeight: 2
-        });
-
-        flightPath.setMap(map)
-        */
     })
-})
+
+    function getPlaces()
+    {
+        // var localdata = JSON.parse(data);
+        var resdata = [];
+        for(var i=0;i<data.length;i++)
+        {
+            console.log();
+            if(data[i].type == radioselect)
+            {
+
+                if(multiselect.length > 0) {
+                    for(var j=0;j<multiselect.length;j++) {
+                        for (var y = 0; y < data[i].options.length; y++) {
+                            //data[i].options[y] == multiselect[j] &&
+                            if (data[i].cost <= cash) {
+                                resdata.append(data[i]);
+                                console.log(data[i].cost);
+                                console.log(cash)
+                            }
+                        }
+                    }
+                }else{
+                    if (data[i].cost <= cash) {
+                        resdata.append(data[i]);
+                        console.log(data[i].cost);
+                        console.log(cash)
+                    }
+                }
+            }
+        }
+        return resdata;
+    }
+
+});
