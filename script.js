@@ -3,8 +3,8 @@ $(document).ready(function(){
 
     setTimeout(function(){ 
         $("#start").fadeOut(500, function(){
-            $("#main").fadeOut(0)
-            $("#main").fadeIn(500)
+            $("#main").fadeOut(0).fadeIn(500);
+            $("#sticky-header").show();
         })
     }, 2000);
     

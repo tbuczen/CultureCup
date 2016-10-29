@@ -14,7 +14,6 @@ body{
     width: 100%;
     text-align: center;
     color: rgb(255,255,255);
-    padding-top: 15vh;
     font-size: 5vh;
 }
 #logo{
@@ -37,10 +36,10 @@ body{
     margin-top: 5%;
 }
 #main{
-    background-color: rgba(0,0,0,0.8);
-    width: 80vw;
-    height: 100vh;
-    margin-left: 10vw;
+    background-color:#E1E1E1;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 40px;
 }
 #kasa{
     color: black;
@@ -95,5 +94,14 @@ li input{
     margin-top: 5%;
 }
 #tekst2{
-    padding-top: 2vh;
+    margin-top: 90px;
+}
+
+#sticky-header{
+    background-color: #FD8A55;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right:0;
+    height: 50px;
 }
