@@ -1,11 +1,11 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: rgba(0,0,0,0.6);
+    background-color:#e1e1e1;
     font-family: 'Ubuntu', sans-serif;
 }
 #start{
-    background-color: rgba(0,0,0,0.8);
+    background-color:#F68E56;
     width: 80vw;
     height: 100vh;
     margin-left: 10vw;
@@ -22,9 +22,10 @@ body{
     width: 80%;
     height: 50%;
     margin-left: 10%;
-    margin-top: 5%;
-    background-repeat: none;
+    padding-top: 50vh;
+    background-repeat: no-repeat;
     background-position: center;
+    background-size: 90%;
 }
 #bt1{
     background-color: rgb(150,150,150);
@@ -90,6 +91,8 @@ li input{
 }
 #getData{
     width: 80%;
+    margin-left: 10%;
+    margin-top: 5%;
 }
 #tekst2{
     padding-top: 2vh;

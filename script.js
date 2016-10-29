@@ -1,12 +1,13 @@
 $(document).ready(function(){
-    //alert("jquery dziala \nculture date")\
-    
-    $("#bt1").on("click",function(){
+    //alert("jquery dziala \nculture date")
+
+    setTimeout(function(){ 
         $("#start").fadeOut(500, function(){
             $("#main").fadeOut(0)
             $("#main").fadeIn(500)
         })
-    })
+    }, 2000);
+    
 
     $("#getData").on("click",function(){
         var data = {
@@ -27,6 +28,7 @@ $(document).ready(function(){
             });
         }
 
+        /*
         var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer;
         directionsDisplay.setMap(map);
@@ -44,6 +46,6 @@ var flightPlanCoordinates = [
         });
 
         flightPath.setMap(map)
-      
-    })  
+        */
+    })
 })
