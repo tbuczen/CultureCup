@@ -75,6 +75,10 @@ li{
     padding: 10px 5px;
 }
 
+li:hover{
+    background-color: #FD8A55;
+}
+
 li label{
     font-size: 25px;
     width: calc(95% - 24px);
