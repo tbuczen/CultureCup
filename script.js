@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+    $("#sticky-header").fadeOut(0)
     var radioselect
     $(".radio").on("click",function(){
         if(radioselect != null){
@@ -59,7 +60,8 @@ $(document).ready(function(){
     setTimeout(function(){
         $("#start").fadeOut(500, function(){
             $("#main").fadeOut(0).fadeIn(500);
-            $("#sticky-header").show();
+            $("#sticky-header").fadeOut(0).fadeIn(500)
+            
         })
     }, 2000);
 

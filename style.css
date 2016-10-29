@@ -88,16 +88,18 @@ li label{
     margin-top: 5%;
 }
 #tekst2{
-    margin-top: 90px;
+    margin-top: 200px;
 }
 
 #sticky-header{
-    background-color: #FD8A55;
+    background-color: #E1E1E1;
     position: absolute;
     top: 0;
     left: 0;
     right:0;
-    height: 50px;
+    height: 180px;
+    width: 100%;
+    background-image: url("header.png");
 }
 
 #search{
