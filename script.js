@@ -13,7 +13,6 @@ $(document).ready(function(){
             $(this).css("background-color","#FD8A55");
             radioselect = id;
         }
-        console.log(radioselect)
     });
 
     $("#cash").on("input",function(){
@@ -34,7 +33,6 @@ $(document).ready(function(){
             $(this).css("background-color","#FD8A55");
             multiselect.push(val);
         }
-        console.log(multiselect);
     });
 
     var myLatLng;
@@ -68,16 +66,18 @@ $(document).ready(function(){
     }, 2000);
 
 
-
     $("#search").on("click",function(){
         $("#list").show();
         $('html, body').animate({
             scrollTop: $("#list").offset().top
         }, 300);
 
-        var $data = getPlaces();
-        console.debug($data);
-        // $("#main").hide();
+        var d = getPlaces();
+
+        $.each(d,function(index, o ){
+            tpl = '<div class="list-row"><div class="name"><p>'+o.name+'</p><p>Cena od '+o.cash+'</p></div><div class="stars">gwiazdki 4.5</div><div class="navigateBtn">Pokaż detale</div><div class="details"><div>Mapka</div><p>opis</p><div>gwiazdki 4.5</div><div class="navigateBtn"></div></div></div>'
+            $("#list").append(tpl);
+        });
     });
 
     $("#backToMain").on("click",function(){
@@ -91,7 +91,6 @@ $(document).ready(function(){
         }
         
         var data = [data.lat ,data.lng]
-        console.log(data)
         tab.push(data)
 
         for(var i=0; i<tab.length; i++){
@@ -111,27 +110,18 @@ $(document).ready(function(){
         var resdata = [];
         for(var i=0;i<data.length;i++)
         {
-            console.log();
-            if(data[i].type == radioselect)
+            var d = data[i];
+            if(d.type == radioselect)
             {
-
                 if(multiselect.length > 0) {
                     for(var j=0;j<multiselect.length;j++) {
-                        for (var y = 0; y < data[i].options.length; y++) {
-                            //data[i].options[y] == multiselect[j] &&
-                            if (data[i].cost <= cash) {
-                                resdata.append(data[i]);
-                                console.log(data[i].cost);
-                                console.log(cash)
-                            }
+                        for (var y = 0; y < d.options.length; y++) {
+                            if (d.cash <= parseInt(cash) && d.options[y] == multiselect[j])
+                                resdata.push(d);
                         }
                     }
                 }else{
-                    if (data[i].cost <= cash) {
-                        resdata.append(data[i]);
-                        console.log(data[i].cost);
-                        console.log(cash)
-                    }
+                    if (d.cash <= parseInt(cash)) resdata.push(d);
                 }
             }
         }

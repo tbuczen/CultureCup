@@ -76,6 +76,7 @@ var data = [
         "description" : "Klub STUDIO to jeden z najbardziej rozpoznawalnych i uznanych klubów muzycznych w Polsce. Na tle innych wyróżnia się bogatym i różnorodnym repertuarem, unikalnym klimatem oraz specyficzną- twórczą atmosferą. Położony w sercu miasteczka studenckiego AGH stanowi sztandarowy punkt na mapie imprezowej każdego, kto w kulturze szuka inspiracji i niezaprzeczalnych wartości.",
         "value" : 4,
         "address" : "Witolda Budryka 4, 30-072 Kraków",
+        "type": "bar",
         "options": [
             "music","dancefloor"
         ],
@@ -91,8 +92,9 @@ var data = [
         "description": "Restauracja Sphinx jest jedną z najlepiej renomowanych restauracji działających na terenie Krakowa. Cechuje się wysokiej klasu obsługą, niezwykłym klimatem i spokojną atmosferą. W ostatnim czasie do dyspozycji została oddana największa restauracja sieci Sphinx W Krakowie.",
         "value": 5,
         "address": "Rynek Główny 25, 30-072 Kraków",
+        "type": "restaurant",
         "options": [
-            "music"
+            "music","freshair"
         ],
         "rates": [
             { "user": "Anita", "opinion": "Jestem zachwycona!!!" },
@@ -106,6 +108,7 @@ var data = [
         "description": "Go Healthy to restauracja promująca zdrowie żywienie i zdrowy tryb życia. W naszej restauracji przeważają wytwory wegetariańskie, niegotowane, pochodzące z ekologiczych źródeł. Wierzymy, że dbanie o odpowiednie żywienie przyczynia się do lepszego zdrowia,a w konsekwencji samopoczucia.",
         "value": 3,
         "address": "Smoleńsk 27, 32-332 Kraków",
+        "type": "restaurant",
         "options": [
             "music"
         ],
@@ -121,8 +124,9 @@ var data = [
         "description": "Powstanie Muzeum związane jest z zorganizowaniem w 1964 roku przez Aeroklub Krakowski wielkiej Wystawy Lotniczej na terenie byłego lotniska Rakowice-Czyżyny. Akutalnie prezentujemy maszyny lotnicze związane z Polskimi Siłami Powietrznymi od 20-lecia między wojennego do czasów teraźniejszych.",
         "value": 5,
         "address": "al. Jana Pawła II 39, 31-864 Kraków",
+        "type": "museum",
         "options": [
-            "flash-air"
+            "freshair"
         ],
         "rates": [
             { "user": "Konrad", "opinion": "Genialne!" },
@@ -138,8 +142,9 @@ var data = [
         "value": 3,
         "address": "Al. 3 Maja 1, 30-062 Kraków",
         "options": [
-            ""
+
         ],
+        "type": "museum",
         "rates": [
             { "user": "Tadeusz", "opinion": "Może być, ale wolę Muzeum Lotnictwa" },
             { "user": "Janusz", "opinion": "polecam i pozdrawiam" }
@@ -152,9 +157,10 @@ var data = [
         "value": 5,
         "cash": 0,
         "address": "plac Na Groblach 23, 31-101 Kraków",
+        "type": "event",
         "options": [
             "music",
-            "flash-air"
+            "freshair"
         ],
         "rates": [
             { "user": "Kasia", "opinion": "Przestraszyłam się :( !!!!" },
@@ -169,10 +175,11 @@ var data = [
         "value": 5,
         "cash": 20,
         "address": "Rynek Główny 1, 30-062 Kraków",
+        "type": "event",
         "options": [
             "music",
             "dancefloor",
-            "flash-air"
+            "freshair"
         ],
         "rates": [
             { "user": "Piotr G.", "opinion": "Od teraz zostaję wiecznym studentem" },
