@@ -7,5 +7,14 @@ $(document).ready(function(){
             $("#main").fadeIn(500)
         })
     })
+
+    $("#getData").on("click",function(){
+        $.ajax(function(){
+
+
+        });
+        //var data = { lang = "", long = ""}
+        ///TODO pokaz na mapie trase
+    })
     
 })
