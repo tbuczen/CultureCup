@@ -1,9 +1,11 @@
 $(document).ready(function(){
+    var radioselect = null;
+    var multiselect = [];
+    var cash = 0;
 
-    $("#sticky-header").fadeOut(0)
-    var radioselect
+    $("#sticky-header").fadeOut(0);
     $(".radio").on("click",function(){
-        id = $(this).attr("id");
+        id = $(this).data("type");
         $(".radio").css("background-color","white");
         if(id == radioselect){
             radioselect = null;
@@ -11,16 +13,15 @@ $(document).ready(function(){
             $(this).css("background-color","#FD8A55");
             radioselect = id;
         }
-
-    })
+        console.log(radioselect)
+    });
 
     $("#cash").on("input",function(){
-        $("#val").text("Chce wydać: " + $("#cash").val() + " PLN")
-    })
+        $("#val").text("Chce wydać: " + $("#cash").val() + " PLN");
+        cash = $("#cash").val();
+    });
 
-    var multiselect = []
     $(".multi").on("click",function(){
-
         var id = $(this).attr("id").substr(1,2);
         var val = $(this).data("val");
 
@@ -33,6 +34,7 @@ $(document).ready(function(){
             $(this).css("background-color","#FD8A55");
             multiselect.push(val);
         }
+        console.log(multiselect);
     });
 
     var myLatLng;
@@ -62,12 +64,24 @@ $(document).ready(function(){
         $("#start").fadeOut(500, function(){
             $("#main").fadeOut(0).fadeIn(500);
             $("#sticky-header").fadeOut(0).fadeIn(500)
-            
         })
     }, 2000);
 
+
+
     $("#search").on("click",function(){
-        console.log("search");
+        $("#list").show();
+        $('html, body').animate({
+            scrollTop: $("#list").offset().top
+        }, 300);
+
+        var $data = getPlaces();
+        console.debug($data);
+        // $("#main").hide();
+    });
+
+    $("#backToMain").on("click",function(){
+
     });
 
     $("#getData").on("click",function(){
@@ -89,26 +103,39 @@ $(document).ready(function(){
             });
         }
 
-
-
-        /*
-        var directionsService = new google.maps.DirectionsService;
-        var directionsDisplay = new google.maps.DirectionsRenderer;
-        directionsDisplay.setMap(map);
-
-var flightPlanCoordinates = [
-          {lat: tab[0][0], lng: tab[0][1]},
-          {lat: tab[1][0], lng: tab[1][1]},
-        ];
-        var flightPath = new google.maps.Polyline({
-          path: flightPlanCoordinates,
-          geodesic: true,
-          strokeColor: '#FF0000',
-          strokeOpacity: 1.0,
-          strokeWeight: 2
-        });
-
-        flightPath.setMap(map)
-        */
     })
-})
+
+    function getPlaces()
+    {
+        // var localdata = JSON.parse(data);
+        var resdata = [];
+        for(var i=0;i<data.length;i++)
+        {
+            console.log();
+            if(data[i].type == radioselect)
+            {
+
+                if(multiselect.length > 0) {
+                    for(var j=0;j<multiselect.length;j++) {
+                        for (var y = 0; y < data[i].options.length; y++) {
+                            //data[i].options[y] == multiselect[j] &&
+                            if (data[i].cost <= cash) {
+                                resdata.append(data[i]);
+                                console.log(data[i].cost);
+                                console.log(cash)
+                            }
+                        }
+                    }
+                }else{
+                    if (data[i].cost <= cash) {
+                        resdata.append(data[i]);
+                        console.log(data[i].cost);
+                        console.log(cash)
+                    }
+                }
+            }
+        }
+        return resdata;
+    }
+
+});
