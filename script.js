@@ -3,7 +3,7 @@ $(document).ready(function(){
     var multiselect = [];
     var cash = 0;
 
-    $("#sticky-header").fadeOut(0)
+    $("#sticky-header").fadeOut(0);
     $(".radio").on("click",function(){
         id = $(this).data("type");
         $(".radio").css("background-color","white");
@@ -14,6 +14,11 @@ $(document).ready(function(){
             radioselect = id;
         }
         console.log(radioselect)
+    });
+
+    $("#cash").on("input",function(){
+        $("#val").text("Chce wydać: " + $("#cash").val() + " PLN");
+        cash = $("#cash").val();
     });
 
     $(".multi").on("click",function(){
@@ -38,14 +43,13 @@ $(document).ready(function(){
         myLatLng = [ position.coords.latitude,  position.coords.longitude];
         map = $('#map').gmap3({
             center:myLatLng,
-            zoom:9,
+            zoom:13,
             disabledDefaultUi: true,
         });
 
         map.marker([
             {position:myLatLng,icon: "http://maps.google.com/mapfiles/marker_orange.png"},
-            {address:"Karmelicka 6, Kraków, Poland",icon: "http://maps.google.com/mapfiles/marker_orange.png"},
-            {address:"Szewska 25, Kraków, Poland", icon: "http://maps.google.com/mapfiles/marker_orange.png"}
+        
         ])
     },
     function (error) {
