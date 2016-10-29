@@ -101,10 +101,11 @@ li label{
     top: 0;
     left: 0;
     right:0;
-    height: 180px;
-    width: 100vw;
+    height: 200px;
+    width: 100%;
     background-image: url("header.png");
     background-repeat: no-repeat;
+    background-size: 100%;
 }
 
 #search{
