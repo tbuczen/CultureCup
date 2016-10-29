@@ -2,8 +2,17 @@ $(document).ready(function(){
 
     var radioselect
     $(".radio").on("click",function(){
-        radioselect = $(this).attr("id")
-        console.log(radioselect)
+        if(radioselect != null){
+            $(".radio").css("background-color","white")
+            $(this).css("background-color","#FD8A55")
+            radioselect = $(this).attr("id")
+            console.log(radioselect)
+        }else{
+            $(this).css("background-color","#FD8A55")
+            radioselect = $(this).attr("id")
+            console.log(radioselect)
+        }
+        
     })
 
     var multiselect = []
@@ -14,7 +23,6 @@ $(document).ready(function(){
             $(this).css("background-color","white")
             multiselect.splice(number, 1)
             console.log(multiselect)
-            
         }else{
             $(this).css("background-color","#FD8A55")
             multiselect[number] = $(this).attr("id")
