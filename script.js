@@ -83,6 +83,7 @@ $(document).ready(function(){
             }
 
             var address = o.address;
+           
             ratesHtml += "<div>";
             tpl = '<div class="list-row" data-address="'+address+'" data-state="0"><div class="name"><p>'+o.name+'</p><p>Cena od '+o.cash+'</p></div><div class="details">'+ "adres: " + o.address + "<br/><br/> opis: " + o.description + "<br/><br/> opinie: "+ ratesHtml +'</div>'
             $(".details").fadeOut(0)
