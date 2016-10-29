@@ -1,9 +1,11 @@
 $(document).ready(function(){
+    var radioselect = null;
+    var multiselect = [];
+    var cash = 0;
 
     $("#sticky-header").fadeOut(0)
-    var radioselect
     $(".radio").on("click",function(){
-        id = $(this).attr("id");
+        id = $(this).data("type");
         $(".radio").css("background-color","white");
         if(id == radioselect){
             radioselect = null;
@@ -11,12 +13,10 @@ $(document).ready(function(){
             $(this).css("background-color","#FD8A55");
             radioselect = id;
         }
+        console.log(radioselect)
+    });
 
-    })
-
-    var multiselect = []
     $(".multi").on("click",function(){
-
         var id = $(this).attr("id").substr(1,2);
         var val = $(this).data("val");
 
@@ -29,6 +29,7 @@ $(document).ready(function(){
             $(this).css("background-color","#FD8A55");
             multiselect.push(val);
         }
+        console.log(multiselect);
     });
 
     var myLatLng;
@@ -64,7 +65,18 @@ $(document).ready(function(){
     }, 2000);
 
     $("#search").on("click",function(){
-        console.log("search");
+        // console.log("search");
+        $("#list").show();
+        $('html, body').animate({
+            scrollTop: $("#list").offset().top
+        }, 300);
+
+
+        // $("#main").hide();
+    });
+
+    $("#backToMain").on("click",function(){
+
     });
 
     $("#getData").on("click",function(){
@@ -85,8 +97,6 @@ $(document).ready(function(){
                 title: 'Hello World!'
             });
         }
-
-
 
         /*
         var directionsService = new google.maps.DirectionsService;

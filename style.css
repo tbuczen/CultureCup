@@ -126,6 +126,7 @@ li label{
     margin-top: 20px;
     padding-bottom: 10px;
 }
+
 .left{
     width: 48%;
     float: left;
@@ -155,4 +156,8 @@ li label{
     background-color: black;
     display: block;
 
+}
+
+#list{
+    min-height: 900px;
 }

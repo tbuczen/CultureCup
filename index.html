@@ -11,14 +11,15 @@
         <link href="https://fonts.googleapis.com/css?family=Ubuntu&amp;subset=latin-ext" rel="stylesheet">
     </head>
     <body>
+        <!--START SCREEN-->
         <div id="start" >
             <div id="logo"></div>
         </div>
+
+        <!--FILTER SCREEN-->
         <div id="main">
             <div id="sticky-header" style="display:block"></div>
-
             <div class="tekst" id="tekst2">Gdzie dziś idziemy?</div>
-
             <input type="number" id="cash" min="0" placeholder="Ile przeznaczyć na wyjście?"/>
 
             <div class="block">
@@ -51,8 +52,42 @@
                 </ul>
                 <span class="line"></span>
             </div>
-
             <div id="search"></div>
+
+
+
+
+            <!--LIST SCREEN-->
+            <div class="block" id="list" style="display: none; background-color: transparent !important;">
+                <div class="list-row">
+                    <div class="name">
+                        <p>Nazwa</p>
+                        <p>cena: od 15 zł za osobę</p>
+                    </div>
+                    <div class="stars">gwiazdki 4.5</div>
+                    <div class="navigateBtn">
+                        Pokaż detale
+                    </div>
+
+                    <div class="details">
+                        <div>Mapka</div>
+                        <p>opis</p>
+                        <div>gwiazdki 4.5</div>
+
+                        <div class="navigateBtn"></div>
+                    </div>
+                </div>
+
+
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <!--DETAILS SCREEN-->
+            <div class="block" style="display: none">
+
+            </div>
         </div>
     </body>
 </html>
