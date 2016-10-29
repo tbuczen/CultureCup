@@ -4,28 +4,25 @@ body{
     background-color: rgba(0,0,0,0.6);
     font-family: 'Ubuntu', sans-serif;
 }
-#start{
-    background-color: rgba(0,0,0,0.8);
-    width: 80vw;
-    height: 100vh;
-    margin-left: 10vw;
-}
-.tekst{
+
+.tekst {
     width: 100%;
     text-align: center;
-    color: rgb(255,255,255);
-    padding-top: 15vh;
+    color: rgb(255, 255, 255);
+    padding-top: 3vh;
     font-size: 5vh;
 }
+
 #logo{
     background-image: url(./logo.png);
     width: 80%;
-    height: 50%;
+    height: 800px;
     margin-left: 10%;
     margin-top: 5%;
-    background-repeat: none;
+    background-repeat: no-repeat;
     background-position: center;
 }
+
 #bt1{
     background-color: rgb(150,150,150);
     width: 80%;
@@ -35,18 +32,21 @@ body{
     text-align: center;
     margin-top: 5%;
 }
-#main{
+
+.full{
     background-color: rgba(0,0,0,0.8);
-    width: 80vw;
-    height: 100vh;
-    margin-left: 10vw;
+    width: 90%;
+    margin: 0 auto;
+    height: 100%;
 }
+
 #kasa{
     color: black;
     width: 80%;
-    height: 5%;
-    margin-left: 10%;
-    margin-top: 5%;
+    margin: 0 auto;
+    display: block;
+    height: 40px;
+    margin-top: 20px;
 }
 #preferences{
     padding-top: 5%; 

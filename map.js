@@ -12,7 +12,7 @@ function initMap() {
             var myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
 
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 16,
+                zoom: 9,
                 center: myLatLng
             });
 
@@ -23,7 +23,7 @@ function initMap() {
             });
         },
         function (error) {
-            console.log("problem z lokalizacją")
+            console.log("Localisation Error")
         },
         {
             maximumAge: 10000,    // czas dostępu do danych

@@ -1,4 +1,4 @@
-<?php require_once "./back/back.php" ?>
+<?php require_once "./back/back.php"; ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,37 +13,27 @@
         <link href="https://fonts.googleapis.com/css?family=Ubuntu&amp;subset=latin-ext" rel="stylesheet">
     </head>
     <body>
-        <div id="start">
+
+        <div id="start" class="full">
             <div class="tekst">CultureDate</div>
             <div id="logo"></div>
             <div id="bt1" class="button">ZACZYNAMY!</div>
         </div>
-        <div id="main" class="hidden">
+
+
+        <div id="main" class="hidden full">
             <div class="tekst">Gdzie dziś wyruszamy?</div>
             <input type="number" id="kasa" min="0" placeholder="ile masz pieniedzy?"/>
-            <div class="tekst" id="preferences">preferencje</div>
+            <div class="tekst" id="preferences">Wybierz typ miejsca :</div>
             <div id="types-list">
                 <ul>
-                <li>
-                    <label for="film">Film</label>
-                    <input id="film" type="radio" name="type" value="film"/>
-                </li>
-                <li>
-                    <label for="cafe">Cafe</label>
-                    <input id="cafe" type="radio" name="type" value="film"/>
-                </li>
-                <li>
-                    <label for="food">Food</label>
-                    <input id="food" type="radio" name="type" value="film"/>
-                </li>
-                <li>
-                    <label for="museum">Museum</label>
-                    <input id="museum" type="radio" name="type" value="film"/>
-                </li>
-                <li>
-                    <label for="theatre">Theatre</label>
-                    <input id="theatre" type="radio" name="type" value="film"/>
-                </li>
+                    <?php foreach ($types as $type) : ?>
+                        <li>
+                            <label for="<?= $type ?>"><?= ucfirst($type); ?></label>
+                            <input id="<?= $type ?>" type="radio" name="type" value="<?= $type ?>"/>
+                        </li>
+                    <?php endforeach; ?>
+
                 </ul>
             </div>
             <div id="map"></div>

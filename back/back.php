@@ -16,7 +16,7 @@ $driver_options = [
 
 $pdo = new PDO(DB_DSN, DB_USER, DB_PASS, $driver_options);
 
-
+$types = ["film","cafe","theater","museum","food","event","plener"];
 // list types
 
 //
