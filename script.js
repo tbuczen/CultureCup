@@ -67,6 +67,7 @@ $(document).ready(function(){
 
 
     $("#search").on("click",function(){
+        $("#list").html("");
         $("#list").show();
         $('html, body').animate({
             scrollTop: $("#list").offset().top
