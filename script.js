@@ -31,20 +31,19 @@ $(document).ready(function(){
         var directionsDisplay = new google.maps.DirectionsRenderer;
         directionsDisplay.setMap(map);
 
-
-      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-        directionsService.route({
-          origin: {lat: tab[0][0], lng: tab[0][1]},
-          destination: {lat: tab[1][0], lng: tab[1][1]},
-          travelMode: 'DRIVING'
-        }, function(response, status) {
-          if (status === 'OK') {
-            directionsDisplay.setDirections(response);
-          } else {
-            window.alert('Directions request failed due to ' + status);
-          }
+var flightPlanCoordinates = [
+          {lat: tab[0][0], lng: tab[0][1]},
+          {lat: tab[1][0], lng: tab[1][1]},
+        ];
+        var flightPath = new google.maps.Polyline({
+          path: flightPlanCoordinates,
+          geodesic: true,
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
         });
-        
-      }
+
+        flightPath.setMap(map)
+      
     })  
 })
