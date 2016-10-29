@@ -102,8 +102,9 @@ li label{
     left: 0;
     right:0;
     height: 180px;
-    width: 100%;
+    width: 100vw;
     background-image: url("header.png");
+    background-repeat: no-repeat;
 }
 
 #search{
