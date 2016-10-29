@@ -14,6 +14,10 @@ $(document).ready(function(){
 
     })
 
+    $("#cash").on("input",function(){
+        $("#val").text("Chce wydać: " + $("#cash").val() + " PLN")
+    })
+
     var multiselect = []
     $(".multi").on("click",function(){
 
@@ -37,14 +41,13 @@ $(document).ready(function(){
         myLatLng = [ position.coords.latitude,  position.coords.longitude];
         map = $('#map').gmap3({
             center:myLatLng,
-            zoom:9,
+            zoom:13,
             disabledDefaultUi: true,
         });
 
         map.marker([
             {position:myLatLng,icon: "http://maps.google.com/mapfiles/marker_orange.png"},
-            {address:"Karmelicka 6, Kraków, Poland",icon: "http://maps.google.com/mapfiles/marker_orange.png"},
-            {address:"Szewska 25, Kraków, Poland", icon: "http://maps.google.com/mapfiles/marker_orange.png"}
+        
         ])
     },
     function (error) {
