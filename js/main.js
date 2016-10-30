@@ -58,7 +58,8 @@ $(document).ready(function(){
         ])
     },
     function (error) {
-        console.log("problem z lokalizacją")
+        console.log("Localisation error");
+        console.log(error);
     },
     {
         maximumAge: 10000,    // czas dostępu do danych
