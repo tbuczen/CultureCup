@@ -3,14 +3,12 @@ $(document).ready(function(){
     var multiselect = [];
     var cash = 0;
 
-    $("#sticky-header").fadeOut(0);
+    $("#wrapper").hide();
     //welcome screen fade
     setTimeout(function(){
-        $("#start").fadeOut(400, function(){
-            $("#main").fadeOut(0).fadeIn(400);
-            $("#sticky-header").fadeOut(0).fadeIn(400)
-        })
-    }, 2000);
+        $("#start").fadeOut(400);
+        $("#wrapper").fadeIn(400);
+    }, 1100);
 
 
     //save input values
@@ -26,8 +24,8 @@ $(document).ready(function(){
     });
 
     $("#cash").on("input",function(){
-        $("#val").text("Chce wydać: " + $("#cash").val() + " PLN");
-        cash = $("#cash").val();
+        $("#cashAmount").text($(this).val());
+        cash = $(this).val();
     });
 
     $(".multi").on("click",function(){
@@ -76,23 +74,27 @@ $(document).ready(function(){
 
         var d = getPlaces();
 
-        $.each(d,function(index, o ){
-            ratesHtml = "<div style='text-align: center'>";
-            for(var i=0; i<o.rates.length; i++){
-                var r = o.rates[i];
-                ratesHtml += "<div><span>"+r.user+": </span><p style='margin-top: 0;'>"+r.opinion+"</p></div>" ;
-            }
+        if(d.length > 0) {
+            $.each(d, function (index, o) {
+                ratesHtml = "<div style='text-align: center'>";
+                for (var i = 0; i < o.rates.length; i++) {
+                    var r = o.rates[i];
+                    ratesHtml += "<div><span>" + r.user + ": </span><p style='margin-top: 0;'>" + r.opinion + "</p></div>";
+                }
 
-            var mapHtml = "";
+                var mapHtml = "";
 
-            var address = o.address;
-            ratesHtml += "<div>";
-            tpl = '<div class="list-row" data-address="'+address+'" data-state="0"><div class="name"><p>'
-                +o.name+'</p><p>Cena od '+o.cash+'</p></div><div class="details">'+ "adres: " + o.address + "<br/><br/> opis: " + o.description +
-                '<br/><div id="map'+i+'"><br/> opinie: '+ ratesHtml +'</div>';
-            $(".details").fadeOut(0);
-            $("#list").append(tpl);
-        });
+                var address = o.address;
+                ratesHtml += "<div>";
+                tpl = '<div class="list-row" data-address="' + address + '" data-state="0"><div class="name"><p>'
+                    + o.name + '</p><p>Cena od ' + o.cash + '</p></div><div class="details">' + "adres: " + o.address + "<br/><br/> opis: " + o.description +
+                    '<br/><div id="map' + i + '"><br/> opinie: ' + ratesHtml + '</div>';
+                $(".details").fadeOut(0);
+                $list.append(tpl);
+            });
+        }else{
+            $list.append('<div class="list-row">Niestety nie znalazłem pasującego miejsca</div>');
+        }
     });
 
     //Expand place to see its details

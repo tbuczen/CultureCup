@@ -1,2 +1,1 @@
-Test
-aaaaa
+Hackaton task - build an app that will focus on culture and business.
