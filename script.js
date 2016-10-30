@@ -4,6 +4,16 @@ $(document).ready(function(){
     var cash = 0;
 
     $("#sticky-header").fadeOut(0);
+    //welcome screen fade
+    setTimeout(function(){
+        $("#start").fadeOut(400, function(){
+            $("#main").fadeOut(0).fadeIn(400);
+            $("#sticky-header").fadeOut(0).fadeIn(400)
+        })
+    }, 2000);
+
+
+    //save input values
     $(".radio").on("click",function(){
         id = $(this).data("type");
         $(".radio").css("background-color","white");
@@ -23,7 +33,6 @@ $(document).ready(function(){
     $(".multi").on("click",function(){
         var id = $(this).attr("id").substr(1,2);
         var val = $(this).data("val");
-
         key = multiselect.indexOf(val);
         if(multiselect[key] != null){
             $(this).css("background-color","white");
@@ -58,19 +67,11 @@ $(document).ready(function(){
         timeout: 15000     // po tym czasie error jeśli brak danych
     });
 
-    setTimeout(function(){
-        $("#start").fadeOut(500, function(){
-            $("#main").fadeOut(0).fadeIn(500);
-            $("#sticky-header").fadeOut(0).fadeIn(500)
-        })
-    }, 2000);
-
-
     $("#search").on("click",function(){
-        $("#list").html("");
-        $("#list").show();
+        $list = $("#list");
+        $list.html("").show();
         $('html, body').animate({
-            scrollTop: $("#list").offset().top
+            scrollTop: $list.offset().top
         }, 300);
 
         var d = getPlaces();
@@ -82,16 +83,22 @@ $(document).ready(function(){
                 ratesHtml += "<div><span>"+r.user+": </span><p style='margin-top: 0;'>"+r.opinion+"</p></div>" ;
             }
 
+            var mapHtml = "";
+
             var address = o.address;
             ratesHtml += "<div>";
-            tpl = '<div class="list-row" data-address="'+address+'" data-state="0"><div class="name"><p>'+o.name+'</p><p>Cena od '+o.cash+'</p></div><div class="details">'+ "adres: " + o.address + "<br/><br/> opis: " + o.description + "<br/><br/> opinie: "+ ratesHtml +'</div>'
-            $(".details").fadeOut(0)
+            tpl = '<div class="list-row" data-address="'+address+'" data-state="0"><div class="name"><p>'
+                +o.name+'</p><p>Cena od '+o.cash+'</p></div><div class="details">'+ "adres: " + o.address + "<br/><br/> opis: " + o.description +
+                '<br/><div id="map'+i+'"><br/> opinie: '+ ratesHtml +'</div>';
+            $(".details").fadeOut(0);
             $("#list").append(tpl);
         });
     });
 
+    //Expand place to see its details
     $('body').on("click",".list-row",function(){
         var state = $(this).data("state");
+        var address = $(this).data("address");
 
         var d = $(this).find(".details");
         if(state == 0){
@@ -101,9 +108,6 @@ $(document).ready(function(){
             $(this).data("state",0);
             d.fadeOut(300);
         }
-
-        // console.log(d)
-
     })
 
     $("#backToMain").on("click",function(){
@@ -111,12 +115,7 @@ $(document).ready(function(){
     });
 
     $("#getData").on("click",function(){
-        var data = {
-            lat: 50.0259406,
-            lng: 19.9177201
-        }
-        
-        var data = [data.lat ,data.lng]
+        var data = [50.0259406 ,19.9177201];
         tab.push(data)
 
         for(var i=0; i<tab.length; i++){
@@ -128,8 +127,9 @@ $(document).ready(function(){
             });
         }
 
-    })
+    });
 
+    //Function filtering places
     function getPlaces()
     {
         // var localdata = JSON.parse(data);
