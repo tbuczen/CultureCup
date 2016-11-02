@@ -27,7 +27,8 @@ After You choose something the app will guide you there, if a place is an partne
 
 https://ccup.urias.it/
 
-TODO:: 
+TODO::
+
 1. range circle at fist map
 2. load some random places at first map
 3. on click - show detailed info about them
