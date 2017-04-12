@@ -1,72 +1,151 @@
-$(document).ready(function(){
+$(document).ready(function () {
     var radioselect = null;
     var multiselect = [];
     var cash = 0;
 
-    $("#wrapper").hide();
-    //welcome screen fade
-    setTimeout(function(){
-        $("#start").fadeOut(400);
-        $("#wrapper").fadeIn(400);
-    }, 1100);
 
+    var positionUpdateInterval = setInterval(positionUpdate, 20*1000);
+
+    function positionUpdate() {
+    }
 
     //save input values
-    $(".radio").on("click",function(){
+    $(".radio").on("click", function () {
         id = $(this).data("type");
-        $(".radio").css("background-color","white");
-        if(id == radioselect){
+        $(".radio").css("background-color", "white");
+        if (id === radioselect) {
             radioselect = null;
-        }else{
-            $(this).css("background-color","#FD8A55");
+        } else {
+            $(this).css("background-color", "#FD8A55");
             radioselect = id;
         }
     });
 
-    $("#cash").on("input",function(){
+    $("#cash").on("input", function () {
         $("#cashAmount").text($(this).val());
         cash = $(this).val();
     });
 
-    $(".multi").on("click",function(){
-        var id = $(this).attr("id").substr(1,2);
+    $(".multi").on("click", function () {
+        var id = $(this).attr("id").substr(1, 2);
         var val = $(this).data("val");
         key = multiselect.indexOf(val);
-        if(multiselect[key] != null){
-            $(this).css("background-color","white");
+        if (multiselect[key] != null) {
+            $(this).css("background-color", "white");
             multiselect.splice(key, 1);
 
-        }else{
-            $(this).css("background-color","#FD8A55");
+        } else {
+            $(this).css("background-color", "#FD8A55");
             multiselect.push(val);
         }
     });
 
+    $
+
+    //MAP INIT
     var myLatLng;
+    var directionsDisplay;
+    var directionsService = new google.maps.DirectionsService();
     var map;
-    navigator.geolocation.getCurrentPosition(function (position) {
-        myLatLng = [ position.coords.latitude,  position.coords.longitude];
-        map = $('#map').gmap3({
-            center:myLatLng,
-            zoom:13,
-            disabledDefaultUi: true,
-        });
 
-        map.marker([
-            {position:myLatLng,icon: "http://maps.google.com/mapfiles/marker_orange.png"},
+    initMap();
+
+    function refreshMap(){
         
-        ])
-    },
-    function (error) {
-        console.log("Localisation error");
-        console.log(error);
-    },
-    {
-        maximumAge: 10000,    // czas dostępu do danych
-        timeout: 15000     // po tym czasie error jeśli brak danych
-    });
+    }
 
-    $("#search").on("click",function(){
+    function drawRoute(latLng, destination) {
+        /*
+         DRIVING BICYCLING TRANSIT WALKING */
+        dest = {
+            origin: latLng,
+            destination: destination,
+            travelMode: google.maps.DirectionsTravelMode.WALKING
+        }
+        directionsService.route(dest, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK){
+                var walkPath = new google.maps.Polyline({
+                  path: [],
+                  strokeColor: '#F68E56',
+                  strokeWeight: 3,
+                });
+                
+                var bounds = new google.maps.LatLngBounds();
+                var legs = response.routes[0].legs;
+                
+                for (i = 0; i < legs.length; i++) {
+                    var steps = legs[i].steps;
+                    for (j = 0; j < steps.length; j++) {
+                        var nextSegment = steps[j].path;
+                        for (k = 0; k < nextSegment.length; k++) {
+                            walkPath.getPath().push(nextSegment[k]);
+                            console.log(nextSegment[k]);
+                            bounds.extend(nextSegment[k]);
+                        }
+                    }
+                }
+                walkPath.setMap(map);
+                map.fitBounds(bounds); 
+            }
+        });
+        
+        positionMarker = new google.maps.Marker({
+            position: destination,
+            map: map,
+            optimized: false,
+            icon: image,
+        });
+    }
+    
+    function initMap() {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
+            
+            map = new google.maps.Map(
+                document.getElementById("map"), {
+                center: myLatLng,
+                zoom: 14,
+                styles: styleDay
+            });
+            
+            var image = new google.maps.MarkerImage(
+                'http://www.clipartkid.com/images/308/orange-dot-clip-art-at-clker-com-vector-clip-art-online-royalty-ifHXTz-clipart.png',
+                null, // size
+                null, // origin
+                new google.maps.Point( 8, 8 ), // anchor (move to center of marker)
+                new google.maps.Size( 17, 17 ) // scaled size (required for Retina display icon)
+            );
+
+            positionMarker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: 'I might be here',
+                optimized: false,
+                icon: image,
+            });
+
+            positionCircle1Km = new google.maps.Circle({
+                center: myLatLng,
+                map: map,
+                fillColor : "#ccc",
+                strokeColor : "#F68E56",
+                strokeWeight: 2,
+                radius: 1000
+            });
+
+            drawRoute(myLatLng, "Szewska 25, Kraków");
+
+        },
+        function (error) {
+            console.log("Localisation error");
+            console.log(error);
+        },{
+            maximumAge: 10000, // czas dostępu do danych
+            timeout: 15000     // po tym czasie error jeśli brak danych
+        });
+    }
+
+    $("#search").on("click", function () {
         $list = $("#list");
         $list.html("").show();
         $('html, body').animate({
@@ -75,7 +154,7 @@ $(document).ready(function(){
 
         var d = getPlaces();
 
-        if(d.length > 0) {
+        if (d.length > 0) {
             $.each(d, function (index, o) {
                 ratesHtml = "<div style='text-align: center'>";
                 for (var i = 0; i < o.rates.length; i++) {
@@ -88,69 +167,62 @@ $(document).ready(function(){
                 var address = o.address;
                 ratesHtml += "<div>";
                 tpl = '<div class="list-row" data-address="' + address + '" data-state="0"><div class="name"><p>'
-                    + o.name + '</p><p>Cena od ' + o.cash + '</p></div><div class="details">' + "adres: " + o.address + "<br/><br/> opis: " + o.description +
-                    '<br/><div id="map' + i + '"><br/> opinie: ' + ratesHtml + '</div>';
+                        + o.name + '</p><p>Cena od ' + o.cash + '</p></div><div class="details">' + "adres: " + o.address + "<br/><br/> opis: " + o.description +
+                        '<br/><div><br/> opinie: ' + ratesHtml + '</div>';
                 $(".details").fadeOut(0);
                 $list.append(tpl);
             });
-        }else{
+        } else {
             $list.append('<div class="list-row">Niestety nie znalazłem pasującego miejsca</div>');
         }
     });
 
     //Expand place to see its details
-    $('body').on("click",".list-row",function(){
+    $('body').on("click", ".more-info", function () {
         var state = $(this).data("state");
-        var address = $(this).data("address");
+//        var address = $(this).data("address");
 
-        var d = $(this).find(".details");
-        if(state == 0){
-            $(this).data("state",1);
+        var d = $(this).parent().parent().find(".details");
+        if (state == 0) {
+            $(this).data("state", 1);
             d.fadeIn(500);
-        }else{
-            $(this).data("state",0);
+        } else {
+            $(this).data("state", 0);
             d.fadeOut(300);
         }
     })
 
-    $("#backToMain").on("click",function(){
+    $("#backToMain").on("click", function () {
 
     });
 
-    $("#getData").on("click",function(){
-        var data = [50.0259406 ,19.9177201];
-        tab.push(data)
-
-        for(var i=0; i<tab.length; i++){
-            var myLatLng = {lat: tab[i][0], lng: tab[i][1]};
-            var marker = new google.maps.Marker({
-                position: myLatLng,
-                map: map,
-                title: 'Hello World!'
-            });
-        }
-
+    $(".navigate").on("click", function () {
+        var address = $(this).data("address");
+        
+        refreshMap();
+        drawRoute(myLatLng, address);
     });
 
     //Function filtering places
     function getPlaces()
     {
-        // var localdata = JSON.parse(data);
         var resdata = [];
-        for(var i=0;i<data.length;i++)
-        {
+        for (var i = 0; i < data.length; i++) {
             var d = data[i];
-            if(d.type == radioselect)
-            {
-                if(multiselect.length > 0) {
-                    for(var j=0;j<multiselect.length;j++) {
+            if (d.type == radioselect) {
+                if (multiselect.length > 0) {
+                    for (var j = 0; j < multiselect.length; j++) {
                         for (var y = 0; y < d.options.length; y++) {
-                            if (d.cash <= parseInt(cash) && d.options[y] == multiselect[j])
+                            if (
+                                    (d.cash <= parseInt(cash) || cash === 0)
+                                    && d.options[y] === multiselect[j]
+                                    )
                                 resdata.push(d);
                         }
                     }
-                }else{
-                    if (d.cash <= parseInt(cash)) resdata.push(d);
+                } else {
+                    if (d.cash <= parseInt(cash) || cash === 0)
+                        resdata.push(d);
                 }
             }
         }
