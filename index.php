@@ -18,9 +18,8 @@
     <body>
     <div id="wrapper">
         <!--FILTER SCREEN-->
-        <div id="filter">
             <!--<div id="sticky-header" style="display:block"></div>-->
-            <img src="header-new.png">
+            <img id="header" src="header-new.png">
             <div class="welcome-text" id="first-title" >Gdzie dziś idziemy?</div>
 
             <div class="block">
@@ -70,14 +69,13 @@
         <!--LIST SCREEN-->
         <div class="block" id="list">
             
-            <div class="list-row" >
+<!--            <div class="list-row" >
                 <div class="info">
                     <p class="place-name">Restauracja Sphinx</p>
                     <p class="place-price">Cena od 50</p>
                 </div>
                 <div class="buttons">
                     <div class="navigate" data-address="Rynek Główny 25, 30-072 Kraków" >Prowadź !</div>
-                    <div class="navigate" data-address="Zaczarowane Koło 7, 30-087 Kraków" >Prowadź 2!</div>
                     <div class="more-info" data-state="0" >Zobacz więcej</div>
                 </div>
                 <span class="clearfix"></span>
@@ -88,21 +86,47 @@
                     Cechuje się wysokiej klasu obsługą, niezwykłym klimatem i spokojną atmosferą. 
                     W ostatnim czasie do dyspozycji została oddana największa restauracja sieci Sphinx W Krakowie.<br>
                     
-                    <div class="opinions"><br> 
+                    <div class="opinions">
                         <p>opinie:</p> 
-                        <div style="text-align: center">
+                        <div class="recent-opinions" style="text-align: center">
                             <div class="comment"><span>Anita: </span><p style="margin-top: 0;">Jestem zachwycona!!!</p></div>
                             <div class="comment"><span>Janusz: </span><p style="margin-top: 0;">Z rodziną na niedzielny obiad? Nie ma lepszego wyboru!</p></div>
                         </div>  
                     </div>
                 </div>
-            </div>
+            </div>-->
             
         </div>
 
         <!--DETAILS SCREEN-->
         <div class="block" style="display: none"></div>
         
+        
+    </div>
+    
+    
+    <div class="hidden">
+        
+        <div class="list-row" id="listTpl">
+                <div class="info">
+                    <p class="place-name"></p>
+                    <p class="place-price"></p>
+                </div>
+                <div class="buttons">
+                    <div class="navigate" data-address="" >Prowadź !</div>
+                    <div class="more-info" data-state="0" >Zobacz więcej</div>
+                </div>
+                <span class="clearfix"></span>
+                
+                <div class="details" style="display: none;"></div>
+                <div class="opinions" style="display: none;"><br> 
+                    <p>Opinie:</p> 
+                    <div class="recent-opinions" style="text-align: center">
+                        <div class="comment"><span>Anita: </span><p style="margin-top: 0;">Jestem zachwycona!!!</p></div>
+                        <div class="comment"><span>Janusz: </span><p style="margin-top: 0;">Z rodziną na niedzielny obiad? Nie ma lepszego wyboru!</p></div>
+                    </div>  
+                </div>
+            </div>
         
     </div>
     </body>

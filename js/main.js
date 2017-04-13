@@ -157,21 +157,21 @@ $(document).ready(function () {
 
         if (d.length > 0) {
             $.each(d, function (index, o) {
-                ratesHtml = "<div style='text-align: center'>";
+                $new = $( "#listTpl" ).clone();
+                        
+                ratesHtml = "";
                 for (var i = 0; i < o.rates.length; i++) {
                     var r = o.rates[i];
                     ratesHtml += "<div><span>" + r.user + ": </span><p style='margin-top: 0;'>" + r.opinion + "</p></div>";
                 }
-
-                var mapHtml = "";
-
-                var address = o.address;
-                ratesHtml += "<div>";
-                tpl = '<div class="list-row" data-address="' + address + '" data-state="0"><div class="name"><p>'
-                        + o.name + '</p><p>Cena od ' + o.cash + '</p></div><div class="details">' + "adres: " + o.address + "<br/><br/> opis: " + o.description +
-                        '<br/><div><br/> opinie: ' + ratesHtml + '</div>';
-                $(".details").fadeOut(0);
-                $list.append(tpl);
+                        
+                $new.find(".place-name").html(o.name);
+                $new.find(".place-price").html("Od " + o.cash + " zł");
+                $new.find(".details").html( o.description);
+                $new.find(".recent-opinions").html(ratesHtml);
+                $new.find(".navigate").data("address",o.address);
+                        
+                $new.appendTo( "#list" );
             });
         } else {
             $list.append('<div class="list-row">Niestety nie znalazłem pasującego miejsca</div>');
@@ -181,8 +181,6 @@ $(document).ready(function () {
     //Expand place to see its details
     $('body').on("click", ".more-info", function () {
         var state = $(this).data("state");
-//        var address = $(this).data("address");
-
         var d = $(this).parent().parent().find(".details");
         if (state == 0) {
             $(this).data("state", 1);
@@ -197,7 +195,7 @@ $(document).ready(function () {
 
     });
 
-    $(".navigate").on("click", function () {
+    $('body').on("click", ".navigate", function () {
         var address = $(this).data("address");
         refreshMap();
         drawRoute(myLatLng, address);

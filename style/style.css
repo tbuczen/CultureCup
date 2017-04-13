@@ -300,6 +300,7 @@ input[type=range]:focus::-ms-fill-upper {
     
     .clearfix{
         clear:both;
+        display: block;
     }
     
     .info{
@@ -313,9 +314,15 @@ input[type=range]:focus::-ms-fill-upper {
     }
     
     .place-name, .place-price {
-        margin-left: 40px;
+        margin-left: 20px;
         font-size: 30px;
     }
+    
+    .buttons > * {
+        margin-top: 40px;
+        font-size: 20px;
+    }
+
 
 
 }
