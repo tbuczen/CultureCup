@@ -19,7 +19,8 @@
     <div id="wrapper">
         <!--FILTER SCREEN-->
         <div id="filter">
-            <div id="sticky-header" style="display:block"></div>
+            <!--<div id="sticky-header" style="display:block"></div>-->
+            <img src="header-new.png">
             <div class="welcome-text" id="first-title" >Gdzie dziś idziemy?</div>
 
             <div class="block">
@@ -76,6 +77,7 @@
                 </div>
                 <div class="buttons">
                     <div class="navigate" data-address="Rynek Główny 25, 30-072 Kraków" >Prowadź !</div>
+                    <div class="navigate" data-address="Zaczarowane Koło 7, 30-087 Kraków" >Prowadź 2!</div>
                     <div class="more-info" data-state="0" >Zobacz więcej</div>
                 </div>
                 <span class="clearfix"></span>

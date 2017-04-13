@@ -3,10 +3,10 @@ $(document).ready(function () {
     var multiselect = [];
     var cash = 0;
 
-
     var positionUpdateInterval = setInterval(positionUpdate, 20*1000);
 
     function positionUpdate() {
+        
     }
 
     //save input values
@@ -40,18 +40,29 @@ $(document).ready(function () {
         }
     });
 
-    $
-
     //MAP INIT
     var myLatLng;
-    var directionsDisplay;
     var directionsService = new google.maps.DirectionsService();
     var map;
 
     initMap();
 
+    var routes = [];
+
+    var image = new google.maps.MarkerImage(
+        'http://www.clipartkid.com/images/308/orange-dot-clip-art-at-clker-com-vector-clip-art-online-royalty-ifHXTz-clipart.png',
+        null, // size
+        null, // origin
+        new google.maps.Point( 8, 8 ), // anchor (move to center of marker)
+        new google.maps.Size( 17, 17 ) // scaled size (required for Retina display icon)
+    );
+
+
     function refreshMap(){
-        
+        for (var i = 0; i < routes.length; i++) {
+            routes[i].setMap(null);
+        }
+        routes=[];
     }
 
     function drawRoute(latLng, destination) {
@@ -79,12 +90,12 @@ $(document).ready(function () {
                         var nextSegment = steps[j].path;
                         for (k = 0; k < nextSegment.length; k++) {
                             walkPath.getPath().push(nextSegment[k]);
-                            console.log(nextSegment[k]);
                             bounds.extend(nextSegment[k]);
                         }
                     }
                 }
                 walkPath.setMap(map);
+                routes.push(walkPath);
                 map.fitBounds(bounds); 
             }
         });
@@ -108,14 +119,6 @@ $(document).ready(function () {
                 styles: styleDay
             });
             
-            var image = new google.maps.MarkerImage(
-                'http://www.clipartkid.com/images/308/orange-dot-clip-art-at-clker-com-vector-clip-art-online-royalty-ifHXTz-clipart.png',
-                null, // size
-                null, // origin
-                new google.maps.Point( 8, 8 ), // anchor (move to center of marker)
-                new google.maps.Size( 17, 17 ) // scaled size (required for Retina display icon)
-            );
-
             positionMarker = new google.maps.Marker({
                 position: myLatLng,
                 map: map,
@@ -132,8 +135,6 @@ $(document).ready(function () {
                 strokeWeight: 2,
                 radius: 1000
             });
-
-            drawRoute(myLatLng, "Szewska 25, Kraków");
 
         },
         function (error) {
@@ -198,7 +199,6 @@ $(document).ready(function () {
 
     $(".navigate").on("click", function () {
         var address = $(this).data("address");
-        
         refreshMap();
         drawRoute(myLatLng, address);
     });

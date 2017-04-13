@@ -127,6 +127,10 @@ input[type=range]:focus::-ms-fill-upper {
     #wrapper{
         margin: 0 auto;
     }
+    
+    #header{
+        width: 100%;
+    }
 
     #start{
         position: absolute;
