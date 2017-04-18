@@ -1,14 +1,11 @@
+/* global ccupMap */
 $(document).ready(function () {
     var radioselect = null;
     var multiselect = [];
     var cash = 0;
-
-    var positionUpdateInterval = setInterval(positionUpdate, 20*1000);
-
-    function positionUpdate() {
-        
-    }
-
+    
+    ccupMap.init();
+    
     //save input values
     $(".radio").on("click", function () {
         id = $(this).data("type");
@@ -39,112 +36,6 @@ $(document).ready(function () {
             multiselect.push(val);
         }
     });
-
-    //MAP INIT
-    var myLatLng;
-    var directionsService = new google.maps.DirectionsService();
-    var map;
-
-    initMap();
-
-    var routes = [];
-
-    var image = new google.maps.MarkerImage(
-        'http://www.clipartkid.com/images/308/orange-dot-clip-art-at-clker-com-vector-clip-art-online-royalty-ifHXTz-clipart.png',
-        null, // size
-        null, // origin
-        new google.maps.Point( 8, 8 ), // anchor (move to center of marker)
-        new google.maps.Size( 17, 17 ) // scaled size (required for Retina display icon)
-    );
-
-
-    function refreshMap(){
-        for (var i = 0; i < routes.length; i++) {
-            routes[i].setMap(null);
-        }
-        routes=[];
-    }
-
-    function drawRoute(latLng, destination) {
-        /*
-         DRIVING BICYCLING TRANSIT WALKING */
-        dest = {
-            origin: latLng,
-            destination: destination,
-            travelMode: google.maps.DirectionsTravelMode.WALKING
-        }
-        directionsService.route(dest, function(response, status) {
-            if (status == google.maps.DirectionsStatus.OK){
-                var walkPath = new google.maps.Polyline({
-                  path: [],
-                  strokeColor: '#F68E56',
-                  strokeWeight: 3,
-                });
-                
-                var bounds = new google.maps.LatLngBounds();
-                var legs = response.routes[0].legs;
-                
-                for (i = 0; i < legs.length; i++) {
-                    var steps = legs[i].steps;
-                    for (j = 0; j < steps.length; j++) {
-                        var nextSegment = steps[j].path;
-                        for (k = 0; k < nextSegment.length; k++) {
-                            walkPath.getPath().push(nextSegment[k]);
-                            bounds.extend(nextSegment[k]);
-                        }
-                    }
-                }
-                walkPath.setMap(map);
-                routes.push(walkPath);
-                map.fitBounds(bounds); 
-            }
-        });
-        
-        positionMarker = new google.maps.Marker({
-            position: destination,
-            map: map,
-            optimized: false,
-            icon: image,
-        });
-    }
-    
-    function initMap() {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
-            
-            map = new google.maps.Map(
-                document.getElementById("map"), {
-                center: myLatLng,
-                zoom: 14,
-                styles: styleDay
-            });
-            
-            positionMarker = new google.maps.Marker({
-                position: myLatLng,
-                map: map,
-                title: 'I might be here',
-                optimized: false,
-                icon: image,
-            });
-
-            positionCircle1Km = new google.maps.Circle({
-                center: myLatLng,
-                map: map,
-                fillColor : "#ccc",
-                strokeColor : "#F68E56",
-                strokeWeight: 2,
-                radius: 1000
-            });
-
-        },
-        function (error) {
-            console.log("Localisation error");
-            console.log(error);
-        },{
-            maximumAge: 10000, // czas dostępu do danych
-            timeout: 15000     // po tym czasie error jeśli brak danych
-        });
-    }
 
     $("#search").on("click", function () {
         $list = $("#list");
@@ -191,19 +82,17 @@ $(document).ready(function () {
         }
     })
 
-    $("#backToMain").on("click", function () {
-
-    });
-
-    $('body').on("click", ".navigate", function () {
+    $('body').on("click touchstart", ".navigate", function () {
         var address = $(this).data("address");
-        refreshMap();
-        drawRoute(myLatLng, address);
+        ccupMap.refresh();
+        ccupMap.drawRouteTo(address);
+        $('html, body').animate({
+            scrollTop: $("#map").offset().top
+        }, 200);
     });
 
     //Function filtering places
-    function getPlaces()
-    {
+    function getPlaces(){
         var resdata = [];
         for (var i = 0; i < data.length; i++) {
             var d = data[i];
